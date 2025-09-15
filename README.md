@@ -79,7 +79,7 @@ Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarg
 
 [Dr. M.-A. Ibarra-Manzano](mailto:ibarram@ugto.mx?subject=[GitHub]%2020253%20PDS_TR) - [DICIS-UG](http://www.posgrados.ugto.mx/Profesores/Perfil.aspx?id=20150) - [ORCID: 0000-0003-4317-0248](https://orcid.org/0000-0003-4317-0248) - [SCOPUS: 15837259000](https://www.scopus.com/authid/detail.uri?authorId=15837259000)
 
-Unidad de Aprendizaje Link: [20253_PDS_TR_](https://github.com/ibarram/PDS_TR/)
+Unidad de Aprendizaje Link: [20253_PDS_TR](https://github.com/ibarram/PDS_TR/)
 
 ## Bibliografía
 - Cormen, T. H. Leiserson, C. E. Rivest, R. L., Stein, C. (2022). Introduction to Algorithms. MIT Press. ISBN: 978-0-2620-4630-5.
