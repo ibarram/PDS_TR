@@ -62,7 +62,7 @@ Las presentaciones de la Unidad de Aprendizaje estan disponibles en formato PDF 
 
 |Archivo|Descripción|Tamaño|Enlace|
 |---|---|---|---|
-|1_Introduccion.pdf|Conceptos fundamentales de sistemas tiempo real.|5.3 MB|[Download](/doc/slide/1_Introduccion.pdf)|
+|1_Introduccion.pdf|Conceptos fundamentales de sistemas tiempo real.|5.01 MB|[Download](/doc/slide/1_Introduccion.pdf)|
 |2_.pdf|.|.|.|
 |3_.pdf|.|.|.|
 
@@ -72,7 +72,7 @@ Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarg
 
 |Archivo|Descripción|Tamaño|Enlace|
 |---|---|---|---|
-|Metro_Interstate_Traffic_Volume_pdf.txt|Archivo TXT de datos del metro por hora para una semana|4 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
+|Metro_Interstate_Traffic_Volume_pdf.txt|Archivo TXT de datos del metro por hora para una semana|1.49 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
 |.|.|.|.|
 
 ## Contacto
