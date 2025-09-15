@@ -54,4 +54,22 @@
 
 ### Competencia de la UDA
 
-Implementa algoritmos que permiten la solución de problemas matemáticos de alto nivel que le brindarán los conocimientos para el desarrollo de software.
+El estudiante modela matemáticamente algoritmos de procesamiento digital de señales en tiempo real, los diseña y valida en entornos de alto nivel con MATLAB, e implementa su ejecución en C sobre sistemas de cómputo y plataformas embebidas, analizando las implicaciones en el uso de recursos, tiempos de respuesta y tolerancia a fallos.
+
+## Contacto
+
+[Dr. M.-A. Ibarra-Manzano](mailto:ibarram@ugto.mx?subject=[GitHub]%2020253%20PDS_TR) - [DICIS-UG](http://www.posgrados.ugto.mx/Profesores/Perfil.aspx?id=20150) - [ORCID: 0000-0003-4317-0248](https://orcid.org/0000-0003-4317-0248) - [SCOPUS: 15837259000](https://www.scopus.com/authid/detail.uri?authorId=15837259000)
+
+Unidad de Aprendizaje Link: [20253_PDS_TR_](https://github.com/ibarram/PDS_TR/)
+
+## Bibliografía
+- Cormen, T. H. Leiserson, C. E. Rivest, R. L., Stein, C. (2022). Introduction to Algorithms. MIT Press. ISBN: 978-0-2620-4630-5.
+- Sedgewick, R. Wayne, K. (2011). Algorithms. Addisson Wesley Professional. 
+- Skienna, S. S. (2008). The Algorithm Design Manual. Springer Verlag. ISBN: 978-3-0305-4255-9.
+- Heineman, G. Police, G. Selkow, S. (2008). Algorithms in a Nutshell. O'Reilly Media, Inc. ISBN: 978-0-5965-1624-6.
+- Kleinberg, J. Tardos, E. (2005). Algorithm Design. Addison Wesley. ISBN: 978-0-3212-9535-4.
+- Mailund, T. (2021). Pointers in C Programming. Apress. ISBN: 978-1-4842-6926-8. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-6927-5).
+- Chavan, S. (2017). C Recipes. Apress. ISBN: 978-1-4842-2967-5. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-2967-5).
+- Toppo, N. Dewan, H. Pointers in C. (2013). Apress. ISBN: 978-1-4302-5911-4. SpringerLink(https://link.springer.com/book/10.1007/978-1-4302-5912-1).
+- Kalicharan, N. (2013). Advanced Topics in C. Apress. ISBN: 
+978-1-4302-6400-2 . SpringerLink(https://link.springer.com/book/10.1007/978-1-4302-6401-9).
