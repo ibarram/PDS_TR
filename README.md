@@ -3,8 +3,7 @@
 [![GitHub discussions](https://img.shields.io/github/discussions/ibarram/PDS_TR)](https://github.com/ibarram/PDS_TR/discussions)
 [![GitHub issues](https://img.shields.io/github/issues/ibarram/PDS_TR)](https://github.com/ibarram/PDS_TR/issues)
 ![Gitter](https://img.shields.io/gitter/room/ibarram/PDS_TR)
-[![Programming Languages: C](https://img.shields.io/badge/C-00599C?logo=c&logoColor=white)](#)
-[![Programming Languages: MATLAB](https://img.shields.io/badge/MATLAB-0076A8?logo=matlab&logoColor=white)](#)
+![Real-Time](https://img.shields.io/badge/Real--Time-%E2%8F%B1-blue)
 ![GitHub License](https://img.shields.io/github/license/ibarram/PDS_TR)
 
 <br />
