@@ -56,6 +56,25 @@
 
 El estudiante modela matemáticamente algoritmos de procesamiento digital de señales en tiempo real, los diseña y valida en entornos de alto nivel con MATLAB, e implementa su ejecución en C sobre sistemas de cómputo y plataformas embebidas, analizando las implicaciones en el uso de recursos, tiempos de respuesta y tolerancia a fallos.
 
+## Presentaciones
+
+Las presentaciones de la Unidad de Aprendizaje estan disponibles en formato PDF para su descarga.
+
+|Archivo|Descripción|Tamaño|Enlace|
+|---|---|---|---|
+|1_Introduccion.pdf|Conceptos fundamentales de sistemas tiempo real.|5.3 MB|[Download](/doc/slide/1_Introduccion.pdf)|
+|2_.pdf|.|.|.|
+|3_.pdf|.|.|.|
+
+## Archivos de bases de datos
+
+Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarga.
+
+|Archivo|Descripción|Tamaño|Enlace|
+|---|---|---|---|
+|Metro_Interstate_Traffic_Volume_pdf.txt|Archivo TXT de datos del metro por hora para una semana|4 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
+|.|.|.|.|
+
 ## Contacto
 
 [Dr. M.-A. Ibarra-Manzano](mailto:ibarram@ugto.mx?subject=[GitHub]%2020253%20PDS_TR) - [DICIS-UG](http://www.posgrados.ugto.mx/Profesores/Perfil.aspx?id=20150) - [ORCID: 0000-0003-4317-0248](https://orcid.org/0000-0003-4317-0248) - [SCOPUS: 15837259000](https://www.scopus.com/authid/detail.uri?authorId=15837259000)
