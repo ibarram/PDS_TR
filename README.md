@@ -34,7 +34,7 @@
 
  * [Contenido](#Contenido)
 
- * [Competencia de la Unidad de Aprendizaje](#CCompetencia-de-la-UDA)
+ * [Competencia de la Unidad de Aprendizaje](#Competencia-de-la-UDA)
 
  * [Evaluación](#Evaluación)
 
