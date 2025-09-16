@@ -32,15 +32,11 @@
  
  * [Introducción](#Introducción)
 
- * [Contenido](#Contenido)
-
  * [Competencia de la Unidad de Aprendizaje](#Competencia-de-la-UDA)
-
- * [Evaluación](#Evaluación)
 
  * [Presentaciones](#Presentaciones)
 
- * [Listado de Códigos Desarrollados durante la UDA](#listado-de-códigos-desarrollados-durante-la-uda)
+ * [Bases de datos utilizadas en las Unidad de Aprendizaje](#Archivos-de-bases-de-datos)
 
  * [Contacto](#Contacto)
 
@@ -51,6 +47,17 @@
 </p></details><p></p>
 
 ## Introducción
+
+El *Procesamiento Digital de Señales en Tiempo Real* es una disciplina clave en la ingeniería eléctrica y de cómputo, donde la exactitud de un sistema no depende únicamente del resultado lógico obtenido, sino también del instante en que la respuesta es entregada. En este contexto, **no responder a tiempo es tan crítico como dar una respuesta incorrecta**.  
+
+Esta Unidad de Aprendizaje tiene como propósito que el estudiante:  
+- Comprenda los **principios de los sistemas en tiempo real**, su clasificación y aplicaciones.  
+- Modele matemáticamente algoritmos de procesamiento digital de señales.  
+- Diseñe y valide soluciones en **MATLAB** como entorno de alto nivel.  
+- Implemente dichos algoritmos en **C sobre sistemas de cómputo y plataformas embebidas**, evaluando el uso de recursos y tiempos de respuesta.  
+- Analice la **computabilidad, complejidad y tolerancia a fallos** en el desarrollo de soluciones de ingeniería.  
+
+El curso integra teoría y práctica para desarrollar competencias que permitan implementar sistemas eficientes y confiables en áreas como el procesamiento de audio, visión por computadora, instrumentación y sistemas embebidos.  
 
 ## Competencia de la UDA
 
