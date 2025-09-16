@@ -52,7 +52,7 @@
 
 ## Introducción
 
-### Competencia de la UDA
+## Competencia de la UDA
 
 El estudiante modela matemáticamente algoritmos de procesamiento digital de señales en tiempo real, los diseña y valida en entornos de alto nivel con MATLAB, e implementa su ejecución en C sobre sistemas de cómputo y plataformas embebidas, analizando las implicaciones en el uso de recursos, tiempos de respuesta y tolerancia a fallos.
 

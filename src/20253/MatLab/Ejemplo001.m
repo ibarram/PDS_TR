@@ -8,7 +8,17 @@ else
     d = '/';
 end
 
-data = load('Metro_Interstate_Traffic_Volume_pdf.txt');
+path_bd = pwd;
+id_pt = find(path_bd==d);
+path_bd = [path_bd(1:id_pt(end-2)) 'data' d];
+file_bd = [path_bd, 'Metro_Interstate_Traffic_Volume_pdf.txt'];
+while ~isfile(file_bd)
+    [filename, pathname] = uigetfile('*.txt', 'Base de datos (txt)', ...
+        'Seleccione la base de datos');
+    file_bd = [pathname filename];
+end
+
+data = load(file_bd);
 v_dias = ["Domingo", "Lunes", "Martes", "Miercoles", ...
             "Jueves", "Viernes", "Sabado"];
 
