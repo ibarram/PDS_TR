@@ -89,13 +89,19 @@ Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarg
 Unidad de Aprendizaje Link: [20253_PDS_TR](https://github.com/ibarram/PDS_TR/)
 
 ## Bibliografía
-- Cormen, T. H. Leiserson, C. E. Rivest, R. L., Stein, C. (2022). Introduction to Algorithms. MIT Press. ISBN: 978-0-2620-4630-5.
-- Sedgewick, R. Wayne, K. (2011). Algorithms. Addisson Wesley Professional. 
-- Skienna, S. S. (2008). The Algorithm Design Manual. Springer Verlag. ISBN: 978-3-0305-4255-9.
-- Heineman, G. Police, G. Selkow, S. (2008). Algorithms in a Nutshell. O'Reilly Media, Inc. ISBN: 978-0-5965-1624-6.
-- Kleinberg, J. Tardos, E. (2005). Algorithm Design. Addison Wesley. ISBN: 978-0-3212-9535-4.
-- Mailund, T. (2021). Pointers in C Programming. Apress. ISBN: 978-1-4842-6926-8. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-6927-5).
-- Chavan, S. (2017). C Recipes. Apress. ISBN: 978-1-4842-2967-5. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-2967-5).
-- Toppo, N. Dewan, H. Pointers in C. (2013). Apress. ISBN: 978-1-4302-5911-4. SpringerLink(https://link.springer.com/book/10.1007/978-1-4302-5912-1).
-- Kalicharan, N. (2013). Advanced Topics in C. Apress. ISBN: 
+
+- O’Regan Gerard (2013), *Mathematics in Computing*. Springer. ISBN: 978-3-030-34208-1. SpringerLink(https://link.springer.com/book/10.1007/978-3-030-34209-8).
+- Cormen, T. H. Leiserson, C. E. Rivest, R. L., Stein, C. (2022). *Introduction to Algorithms*. MIT Press. ISBN: 978-0-2620-4630-5.
+- Sedgewick, R. Wayne, K. (2011). *Algorithms*. Addisson Wesley Professional. 
+- Skienna, S. S. (2008). *The Algorithm Design Manual*. Springer Verlag. ISBN: 978-3-0305-4255-9.
+- Heineman, G. Police, G. Selkow, S. (2008). *Algorithms in a Nutshell*. O'Reilly Media, Inc. ISBN: 978-0-5965-1624-6.
+- Kleinberg, J. Tardos, E. (2005). *Algorithm Design*. Addison Wesley. ISBN: 978-0-3212-9535-4.
+- Gay Warren (2018), *Beginning STM32*. Apress. ISBN: 979-8-8688-0199-0. SpringerLink(https://link.springer.com/book/10.1007/979-8-8688-0199-0),  
+- You Joseph (2019), *System-on-Chip Design*. ARM Education Media.
+- Belean Bogdan (2018), *Application-Specific Hardware Architecture Design with VHDL*. Springer.  
+- Athanas Peter, Pnevmatikatos Dionisios & Sklavos Nicolas (2013), *Embedded Systems Design with FPGAs*. Springer.
+- Mailund, T. (2021). *Pointers in C Programming*. Apress. ISBN: 978-1-4842-6926-8. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-6927-5).
+- Chavan, S. (2017). *C Recipes*. Apress. ISBN: 978-1-4842-2967-5. SpringerLink(https://link.springer.com/book/10.1007/978-1-4842-2967-5).
+- Toppo, N. Dewan, H. *Pointers in C*. (2013). Apress. ISBN: 978-1-4302-5911-4. SpringerLink(https://link.springer.com/book/10.1007/978-1-4302-5912-1).
+- Kalicharan, N. (2013). *Advanced Topics in C*. Apress. ISBN: 
 978-1-4302-6400-2 . SpringerLink(https://link.springer.com/book/10.1007/978-1-4302-6401-9).
