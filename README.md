@@ -81,7 +81,7 @@ Los códigos fuentes desarrollados a lo largo de la Unidad de Aprendizaje están
 
 |Archivo|Descripción|Tamaño|Lenguaje|Enlace|
 |---|---|---|---|---|
-|Ejemplo001.m|Script MATLAB para análisis de volumen de tráfico en tiempo real.|.|<img src="https://img.shields.io/badge/MATLAB-0076A8?logo=matlab&logoColor=white" />|[Download](/src/20253/MatLab/Ejemplo001.m)|
+|Ejemplo001.m|Script MATLAB para análisis de volumen de tráfico en tiempo real.|3.45 KB|<img src="https://img.shields.io/badge/MATLAB-0076A8?logo=matlab&logoColor=white" />|[Download](/src/20253/MatLab/Ejemplo001.m)|
 |.|.|.|<img src="https://img.shields.io/badge/C-00599C?logo=c&logoColor=white" />|.|
 
 
