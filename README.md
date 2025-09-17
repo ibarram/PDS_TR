@@ -36,6 +36,8 @@
 
  * [Presentaciones](#Presentaciones)
 
+ * [Códigos desarrollados en la UDA](#Códigos-desarrollados-en-la-UDA)
+
  * [Bases de datos utilizadas en las Unidad de Aprendizaje](#Archivos-de-bases-de-datos)
 
  * [Contacto](#Contacto)
@@ -73,16 +75,24 @@ Las presentaciones de la Unidad de Aprendizaje estan disponibles en formato PDF 
 |2_.pdf|.|.|.|
 |3_.pdf|.|.|.|
 
+## Códigos desarrollados en la UDA
+
+Los códigos fuentes desarrollados a lo largo de la Unidad de Aprendizaje están disponibles en la carpeta [src](/src/20253/)
+
+|Archivo|Descripción|Tamaño|Lenguaje|Enlace|
+|---|---|---|---|---|
+|.|.|.|.|.|
+
 ## Archivos de bases de datos
 
-Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarga.
+Los archivos de los datos usados en la Unidad de Aprendizaje estan disponible para su descarga, puede acceder a todos en la carpeta [data](/data).
 
 |Archivo|Descripción|Tamaño|Enlace|
 |---|---|---|---|
 |Metro_Interstate_Traffic_Volume_pdf.txt|Archivo de texto de datos del metro por hora para una semana|1.49 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
-|SLC.txt|Archivo de texto con dos caracteristicas para dos grupos con 12 puntos|636 Bytes|Download](/data/SLC.txt)|
-|SLC_2.txt|Archivo de texto con dos características para dos grupos con 90 puntos|4.66 KB|Download](/data/SLC_2.txt)|
-|RGGB.zip|Base de datos de imagenes en patrón RGGB para la recuperación de color.|747 KB|Download](/data/RGGB.zip)|
+|SLC.txt|Archivo de texto con dos caracteristicas para dos grupos con 12 puntos|636 B|[Download](/data/SLC.txt)|
+|SLC_2.txt|Archivo de texto con dos características para dos grupos con 90 puntos|4.66 KB|[Download](/data/SLC_2.txt)|
+|RGGB.zip|Base de datos de imagenes en patrón RGGB para la recuperación de color.|747 KB|[Download](/data/RGGB.zip)|
 |.|.|.|.|
 
 ## Contacto
