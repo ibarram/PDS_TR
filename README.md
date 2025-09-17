@@ -79,7 +79,10 @@ Los archivos usados en la Unidad de Aprendizaje estan disponible para su descarg
 
 |Archivo|Descripción|Tamaño|Enlace|
 |---|---|---|---|
-|Metro_Interstate_Traffic_Volume_pdf.txt|Archivo TXT de datos del metro por hora para una semana|1.49 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
+|Metro_Interstate_Traffic_Volume_pdf.txt|Archivo de texto de datos del metro por hora para una semana|1.49 KB|[Download](/data/Metro_Interstate_Traffic_Volume_pdf.txt)|
+|SLC.txt|Archivo de texto con dos caracteristicas para dos grupos con 12 puntos|.|Download](/data/SLC.txt)|
+|SLC_2.txt|Archivo de texto con dos características para dos grupos con 90 puntos|.|Download](/data/SLC_2.txt)|
+|RGGB.zip|Base de datos de imagenes en patrón RGGB para la recuperación de color.|.|Download](/data/RGGB.zip)|
 |.|.|.|.|
 
 ## Contacto
