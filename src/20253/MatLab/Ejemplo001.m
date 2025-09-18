@@ -70,6 +70,30 @@ rdca = roots(flip(dca));            % Raíces de la 1ª derivada (puntos crític
 % Evaluación del polinomio en los puntos críticos
 rye = ((rdca*ones(1, ng+1)).^(ones(ng-1,1)*(0:ng))) * ca;
 
+pd = rye(ng/2);
+pd_s = ceil(pd)-pd;
+pd_i = pd-floor(pd);
+md = zeros(2, 2);
+xi = x(floor(rdca(2))>=x);
+hi = y(floor(rdca(2))>=x);
+hi(end) = round(pd_i*hi(end));
+xs = x(floor(rdca(2))<=x);
+hs = y(floor(rdca(2))<=x);
+hs(1) = hs(1)-hi(end);
+
+md(1, 1) = (xi'*hi)/sum(hi);
+md(1, 2) = ((xi.^2)'*hi)/sum(hi)-md(1, 1)^2;
+md(1, 3) = max(hi);
+md(2, 1) = (xs'*hs)/sum(hs);
+md(2, 2) = ((xs.^2)'*hs)/sum(hs)-md(2, 1)^2;
+md(2, 3) = max(hs);
+
+np = 500;
+vx = min(x):(max(x)-min(x))/np:max(x);
+vy1 = md(1,3)*exp(-((vx-md(1,1)).^2)/(2*md(1,2)));
+vy2 = md(2,3)*exp(-((vx-md(2,1)).^2)/(2*md(2,2)));
+vy = [vy1(vx<=rdca(2)) vy2(vx>rdca(2))];
+
 %% Visualización de resultados
 figure(1);
 bar(x, y);                          % Histograma del tráfico
@@ -83,3 +107,12 @@ plot(rdca, rye, 'bo', 'MarkerSize', 8, 'MarkerFaceColor', 'b'); % Puntos crític
 
 title("Análisis de Volumen de Tráfico - " + v_dias(s_dia));
 legend("Datos originales", "Ajuste polinomial", "Puntos críticos");
+print('-f1', '-djpeg90', '-r300', 'Figura1.jpg');
+
+figure(2);
+bar(x, y);                          % Histograma del tráfico
+xlabel(v_dias(s_dia));              % Etiqueta del eje X (día seleccionado)
+ylabel("Personas");                 % Etiqueta del eje Y
+grid on;                            % Activar la cuadrícula
+hold on;
+plot(vx, vy, 'r-', 'LineWidth', 2);
