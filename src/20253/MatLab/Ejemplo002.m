@@ -46,64 +46,65 @@ v_dias = ["Domingo", "Lunes", "Martes", "Miercoles", ...
           "Jueves", "Viernes", "Sabado"];
 
 %% Selección de parámetros de análisis
-s_dia = 1;       % Día a analizar (1=Domingo)
+s_dia = unique(data(:,1));       % Día a analizar
+n_dia = length(s_dia);
 ng = 4;          % Grado del polinomio de ajuste
 
-%% Filtrar datos por día seleccionado
-id_d = data(:,1) == s_dia;   % Índices de filas del día seleccionado
-x = data(id_d, 2);           % Variable independiente
-y = data(id_d, 3);           % Volumen de tráfico
-nm = length(x);              % Número de muestras
+for i1=1:n_dia
+    id_ts = (data(:,1) == s_dia(i1));
+    id_tr = ~id_ts;
+    x = data(id_tr, 2);           % Variable independiente
+    y = data(id_tr, 3);           % Volumen de tráfico
+    nm = length(x);              % Número de muestras
+    % Se construye la matriz de Vandermonde para resolver el sistema
+    ca = (x*ones(1, ng+1)).^(ones(nm,1)*(0:ng)) \ y;
 
-%% Ajuste polinomial de grado 'ng'
-% Se construye la matriz de Vandermonde para resolver el sistema
-ca = (x*ones(1, ng+1)).^(ones(nm,1)*(0:ng)) \ y;
+    % Evaluación del polinomio ajustado
+    ye = ((x*ones(1, ng+1)).^(ones(nm,1)*(0:ng))) * ca;
 
-% Evaluación del polinomio ajustado
-ye = ((x*ones(1, ng+1)).^(ones(nm,1)*(0:ng))) * ca;
+    %% Cálculo de derivadas y raíces
+    dca = ca(2:(ng+1)).*(1:ng)';        % Coeficientes de la 1a derivada
+    d2ca = dca(2:ng).*(1:(ng-1))';      % Coeficientes de la 2a derivada
+    rdca = roots(flip(dca));            % Raíces de la 1ª derivada (puntos críticos)
+    
+    % Evaluación del polinomio en los puntos críticos
+    rye = ((rdca*ones(1, ng+1)).^(ones(ng-1,1)*(0:ng))) * ca;
 
-%% Cálculo de derivadas y raíces
-dca = ca(2:(ng+1)).*(1:ng)';        % Coeficientes de la 1a derivada
-d2ca = dca(2:ng).*(1:(ng-1))';      % Coeficientes de la 2a derivada
-rdca = roots(flip(dca));            % Raíces de la 1ª derivada (puntos críticos)
-
-% Evaluación del polinomio en los puntos críticos
-rye = ((rdca*ones(1, ng+1)).^(ones(ng-1,1)*(0:ng))) * ca;
-
-pd = rye(ng/2);
-pd_s = ceil(pd)-pd;
-pd_i = pd-floor(pd);
-md = zeros(2, 2);
-xi = x(floor(rdca(2))>=x);
-hi = y(floor(rdca(2))>=x);
-hi(end) = round(pd_i*hi(end));
-xs = x(floor(rdca(2))<=x);
-hs = y(floor(rdca(2))<=x);
-hs(1) = hs(1)-hi(end);
-
-md(1, 1) = (xi'*hi)/sum(hi);
-md(1, 2) = ((xi.^2)'*hi)/sum(hi)-md(1, 1)^2;
-md(1, 3) = max(hi);
-md(2, 1) = (xs'*hs)/sum(hs);
-md(2, 2) = ((xs.^2)'*hs)/sum(hs)-md(2, 1)^2;
-md(2, 3) = max(hs);
-
-np = 500;
-vx = min(x):(max(x)-min(x))/np:max(x);
-vy1 = md(1,3)*exp(-((vx-md(1,1)).^2)/(2*md(1,2)));
-vy2 = md(2,3)*exp(-((vx-md(2,1)).^2)/(2*md(2,2)));
-vy = [vy1(vx<=rdca(2)) vy2(vx>rdca(2))];
-
-dm = md(1,1)-md(2,1);
-ds2 = md(1,2)-md(2,2);
-xr1 = (2*md(2,1)*md(1,2)-2*md(1,1)*md(2,2)+sqrt(md(1,2)*md(2,2)*(4*dm*dm-log((md(1,3)/md(2,3))^(8*ds2)))))/(2*ds2);
-xr2 = (2*md(2,1)*md(1,2)-2*md(1,1)*md(2,2)-sqrt(md(1,2)*md(2,2)*(4*dm*dm-log((md(1,3)/md(2,3))^(8*ds2)))))/(2*ds2);
-if(xr1>md(1,1)&&xr1<md(2,1))
-    xr = xr1;
-else
-    xr = xr2;
+    pd = rye(ng/2);
+    pd_s = ceil(pd)-pd;
+    pd_i = pd-floor(pd);
+    md = zeros(2, 3);
+    xi = x(floor(rdca(2))>=x);
+    hi = y(floor(rdca(2))>=x);
+    hi(xi==floor(rdca(2)))=round(hi(xi==floor(rdca(2)))*pd_i);
+    xs = x(floor(rdca(2))<=x);
+    hs = y(floor(rdca(2))<=x);
+    hs(xs==floor(rdca(2))) = hs(xs==floor(rdca(2)))-hi(xi==floor(rdca(2)));
+    
+    md(1, 1) = (xi'*hi)/sum(hi);
+    md(1, 2) = ((xi.^2)'*hi)/sum(hi)-md(1, 1)^2;
+    md(1, 3) = max(hi);
+    md(2, 1) = (xs'*hs)/sum(hs);
+    md(2, 2) = ((xs.^2)'*hs)/sum(hs)-md(2, 1)^2;
+    md(2, 3) = max(hs);
+    
+    np = 500;
+    vx = min(x):(max(x)-min(x))/np:max(x);
+    vy1 = md(1,3)*exp(-((vx-md(1,1)).^2)/(2*md(1,2)));
+    vy2 = md(2,3)*exp(-((vx-md(2,1)).^2)/(2*md(2,2)));
+    vy = [vy1(vx<=rdca(2)) vy2(vx>rdca(2))];
+    
+    dm = md(1,1)-md(2,1);
+    ds2 = md(1,2)-md(2,2);
+    xr1 = (2*md(2,1)*md(1,2)-2*md(1,1)*md(2,2)+sqrt(md(1,2)*md(2,2)*(4*dm*dm-log((md(1,3)/md(2,3))^(8*ds2)))))/(2*ds2);
+    xr2 = (2*md(2,1)*md(1,2)-2*md(1,1)*md(2,2)-sqrt(md(1,2)*md(2,2)*(4*dm*dm-log((md(1,3)/md(2,3))^(8*ds2)))))/(2*ds2);
+    if(xr1>md(1,1)&&xr1<md(2,1))
+        xr = xr1;
+    else
+        xr = xr2;
+    end
+    vy2 = [vy1(vx<=xr) vy2(vx>xr)];
 end
-vy2 = [vy1(vx<=xr) vy2(vx>xr)];
 
 
 %% Visualización de resultados
