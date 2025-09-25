@@ -50,11 +50,14 @@ s_dia = unique(data(:,1));       % Día a analizar
 n_dia = length(s_dia);
 ng = 4;          % Grado del polinomio de ajuste
 
+er = zeros(1, n_dia);
 for i1=1:n_dia
     id_ts = (data(:,1) == s_dia(i1));
     id_tr = ~id_ts;
     x = data(id_tr, 2);           % Variable independiente
     y = data(id_tr, 3);           % Volumen de tráfico
+    xt = data(id_ts, 2);
+    yt = data(id_ts, 3);
     nm = length(x);              % Número de muestras
     % Se construye la matriz de Vandermonde para resolver el sistema
     ca = (x*ones(1, ng+1)).^(ones(nm,1)*(0:ng)) \ y;
@@ -76,17 +79,25 @@ for i1=1:n_dia
     md = zeros(2, 3);
     xi = x(floor(rdca(2))>=x);
     hi = y(floor(rdca(2))>=x);
-    hi(xi==floor(rdca(2)))=round(hi(xi==floor(rdca(2)))*pd_i);
+    id_xi = xi==floor(rdca(2));
     xs = x(floor(rdca(2))<=x);
     hs = y(floor(rdca(2))<=x);
-    hs(xs==floor(rdca(2))) = hs(xs==floor(rdca(2)))-hi(xi==floor(rdca(2)));
+    id_xs = xs==floor(rdca(2));
+    hi(id_xi)=round(hi(id_xi)*pd_i);
+    hs(id_xs) = hs(id_xs)-hi(id_xi);
+    nxiu = length(unique(xi));
+    nxsu = length(unique(xs));
     
     md(1, 1) = (xi'*hi)/sum(hi);
     md(1, 2) = ((xi.^2)'*hi)/sum(hi)-md(1, 1)^2;
-    md(1, 3) = max(hi);
+    id_xis1 = ones(n_dia-1,1)*(1:nxiu);
+    id_xis2 = (0:n_dia-2)'*ones(1,nxiu)*nxiu;
+    md(1, 3) = mean(max(hi(id_xis1+id_xis2),[],2));
     md(2, 1) = (xs'*hs)/sum(hs);
     md(2, 2) = ((xs.^2)'*hs)/sum(hs)-md(2, 1)^2;
-    md(2, 3) = max(hs);
+    id_xss1 = ones(n_dia-1,1)*(1:nxsu);
+    id_xss2 = (0:n_dia-2)'*ones(1,nxsu)*nxsu;
+    md(2, 3) = mean(max(hs(id_xss1+id_xss2),[],2));
     
     np = 500;
     vx = min(x):(max(x)-min(x))/np:max(x);
@@ -104,8 +115,13 @@ for i1=1:n_dia
         xr = xr2;
     end
     vy2 = [vy1(vx<=xr) vy2(vx>xr)];
-end
 
+    ye1 = md(1,3)*exp(-((xt-md(1,1)).^2)/(2*md(1,2)));
+    ye2 = md(2,3)*exp(-((xt-md(2,1)).^2)/(2*md(2,2)));
+    ye = [ye1(xt<=xr); ye2(xt>xr)];
+    er(i1) = sum((yt-ye).^2)/length(xt);
+end
+fprintf("%.4f+-%.4f\n", mean(er), std(er));
 
 %% Visualización de resultados
 figure(1);
