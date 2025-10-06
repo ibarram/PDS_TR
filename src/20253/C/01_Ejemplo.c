@@ -5,19 +5,12 @@
 #define N 	50
 #define NC 	3
 
-typedef struct lt{
-	int x;
-	struct lt *s;
-}lt;
-
 int main(int argc, char *argv[])
 {
 	char filename[N];
-	char c;
-	int nr, **datos, *pd, i, j, k;
+	int nr, **datos, i, j, k, nud, nuh;
 	FILE *fp;
-	lt *lt_c, *lt_n, *lt_t;
-	lt_c = NULL;
+	lt *lt_d, *lt_h;
 	if(argc<2)
 	{
 		printf("Ingrese el nombre del archivo: ");
@@ -29,70 +22,26 @@ int main(int argc, char *argv[])
 	fp = fopen(filename, "rt");
 	if(fp==NULL)
 		return 1;
-	nr = 0;
-	do{
-		c = fgetc(fp);
-		if(c==10)
-			nr++;
-	}while(c!=EOF);
+	nr = nu_registros(fp);
 	printf("NR = %d\n", nr);
-	pd = (int*)malloc(nr*NC*sizeof(int));
-	if(pd==NULL)
+	datos = crear_mat(nr, NC);
+	if(datos==NULL)
 	{
 		fclose(fp);
 		return 2;
 	}
-	datos = (int**)malloc(nr*sizeof(int*));
-	if(datos==NULL)
-	{
-		free(pd);
-		fclose(fp);
-		return 3;
-	}
-	for(i=0; i<nr; i++)
-		datos[i] = pd+i*NC;
-	rewind(fp);
-	for(i=0; i<nr; i++)
-	{
-		for(j=0; j<NC; j++)
-		{
-			fscanf(fp, "%d", datos[i]+j);
-			printf("%d\t", datos[i][j]);
-		}
-		if(lt_c==NULL)
-		{
-			lt_n = (lt*)malloc(sizeof(lt));
-			lt_n->x = datos[i][0];
-			lt_n->s=NULL;
-			lt_c = lt_n;
-		}
-		else
-		{
-			lt_t = lt_c;
-			while(lt_t!=NULL)
-			{
-				if(lt_t->x==datos[i][0])
-					break;
-				lt_t = lt_t->s;
-			}
-			if(lt_t==NULL)
-			{
-				lt_n = (lt*)malloc(sizeof(lt));
-				lt_n->x = datos[i][0];
-				lt_n->s=lt_c;
-				lt_c = lt_n;
-			}
-		}
-		printf("\n");
-	}
-	lt_t = lt_c;
-	while(lt_t!=NULL)
-	{
-		printf("%d\n", lt_t->x);
-		lt_t = lt_t->s;
-	}
+	lectura_datos(fp, datos, nr, NC);
+	imprimir_datos(datos, nr, NC);
+	lt_d = unicos(datos, nr, NC, 0);
+	lt_h = unicos(datos, nr, NC, 1);
+	nud = contar_lt(lt_d);
+	nuh = contar_lt(lt_h);
+	printf("Dias: %d\nHoras: %d\n", nud, nuh);
+
+	liberar_lt(lt_d);
+	liberar_lt(lt_h);
 	fclose(fp);
-	free(pd);
+	free(datos[0]);
 	free(datos);
 	return 0;
 }
