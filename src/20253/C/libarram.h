@@ -17,6 +17,11 @@ typedef struct lt{
 	struct lt *s;
 }lt;
 
+typedef struct{
+	int n;
+	double *a;
+}poly;
+
 int nu_registros(FILE *fp);
 int **crear_mat(int nr, int nc);
 int lectura_datos(FILE *fp, int **datos, int nr, int nc);
@@ -25,5 +30,9 @@ lt *unicos(int **datos, int nr, int nc, int ind);
 int imprimir_lt(lt *lt_c);
 int liberar_lt(lt *lt_c);
 int contar_lt(lt *lt_d);
+double evaluar(poly fx, double x);
+poly derivar(poly fx);
+int imprimir_poly(poly fx);
+double raiz_biseccion(poly fx, double x1, double x2, double ea);
 
 #endif // LIBARRAM_H

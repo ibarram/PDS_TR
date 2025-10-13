@@ -120,3 +120,74 @@ int liberar_lt(lt *lt_c)
 	}
 	return 0;
 }
+
+double evaluar(poly fx, double x)
+{
+	int i;
+	double r;
+	for(i=1, r=fx.a[fx.n]; i<=fx.n; i++)
+		r = r*x+fx.a[fx.n-i];
+	return r;
+}
+
+poly derivar(poly fx)
+{
+	poly dfx;
+	int i;
+	dfx.n = fx.n-1;
+	dfx.a = (double*)calloc(fx.n, sizeof(double));
+	if(dfx.a == NULL)
+	{
+		dfx.n = 0;
+		return dfx;
+	}
+	for(i=0; i<fx.n; i++)
+		dfx.a[i] = (i+1)*fx.a[i+1];
+	return dfx;
+}
+
+double raiz_biseccion(poly fx, double x1, double x2, double ea)
+{
+	double fx1, fx2, xr, fxr, ea_a;
+	fx1 = evaluar(fx, x1);
+	fx2 = evaluar(fx, x2);
+	if(fx1*fx2>0)
+		return 0;
+	ea_a = ea+1;
+	while(ea_a>ea)
+	{
+		xr = (x1+x2)/2;
+		fxr = evaluar(fx, xr);
+		if(fxr*fx2<0)
+		{
+			ea_a = fabs((xr-x1)/xr);
+			x1 = xr;
+			fx1 = fxr;
+		}
+		else if(fx1*fxr<0)
+		{
+			ea_a = fabs((xr-x2)/xr);
+			x2 = xr;
+			fx2 = fxr;
+		}
+		else
+			return xr;
+	}
+	return xr;
+}
+
+int imprimir_poly(poly fx)
+{
+	int i;
+	printf("f(x) = %lfx^%d", fx.a[fx.n], fx.n);
+	for(i=fx.n-1; i>0; i--)
+		printf("%+lfx^%d", fx.a[i], i);
+	printf("%+lf\n", fx.a[0]);
+	return 0;
+}
+
+
+
+
+
+
