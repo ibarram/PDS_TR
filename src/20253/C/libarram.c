@@ -94,6 +94,19 @@ lt *unicos(int **datos, int nr, int nc, int ind)
 	return lt_c;
 }
 
+double val_inicial(lt *lt_h)
+{
+	return (double)(lt_h->x);
+}
+
+double val_final(lt *lt_h)
+{
+	if(lt_h->s==NULL)
+		return (double)(lt_h->x);
+	else
+		return val_final(lt_h->s);
+}
+
 int imprimir_lt(lt *lt_c)
 {
 	while(lt_c!=NULL)
@@ -174,6 +187,24 @@ double raiz_biseccion(poly fx, double x1, double x2, double ea)
 			return xr;
 	}
 	return xr;
+}
+
+double raiz_secante(poly fx, double x1, double ea)
+{
+	double x2;
+	double fx1, dfx1, ea_a=100;
+	poly dfx = derivar(fx);
+	while(ea_a>ea)
+	{
+		fx1 = evaluar(fx, x1);
+		dfx1 = evaluar(dfx, x1);
+		if(dfx1)
+			x2 = x1-fx1/dfx1;
+		ea_a = fabs((x2-x1)/x2);
+		x1 = x2;
+		printf("%lf (%lf, %lf)\n", x1, ea_a, dfx1);
+	}
+	return x1;
 }
 
 int imprimir_poly(poly fx)

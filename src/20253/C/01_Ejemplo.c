@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	double *sx, *sy, **A, **A2, *b, fct;
 	FILE *fp;
 	poly fx1, dfx1;
-	double x, xr, x1, x2, er;
+	double x, xr, x1, x2, er = 1e-10;
 	lt *lt_d, *lt_h, *lt_s;
 	if(argc<2)
 	{
@@ -36,9 +36,11 @@ int main(int argc, char *argv[])
 		return 2;
 	}
 	lectura_datos(fp, datos, nr, NC);
-	imprimir_datos(datos, nr, NC);
+//	imprimir_datos(datos, nr, NC);
 	lt_d = unicos(datos, nr, NC, 0);
 	lt_h = unicos(datos, nr, NC, 1);
+	x1 = val_inicial(lt_h);
+	x2 = val_final(lt_h);
 	nud = contar_lt(lt_d);
 	nuh = contar_lt(lt_h);
 	printf("Dias: %d\nHoras: %d\n", nud, nuh);
@@ -171,13 +173,6 @@ int main(int argc, char *argv[])
 			for(j=0; j<NG+1; j++)
 				for(k=0; k<NG+1; k++)
 					A2[j][k] = A[j][k];
-			for(j=0; j<NG+1; j++)
-			{
-				for(k=0; k<NG+1; k++)
-					printf("%.0lf\t", A2[j][k]);
-				printf("%.0f\n", b[j]);
-			}
-			printf("----\n");
 			for(j=1; j<NG+1; j++)
 				for(k=j; k<NG+1; k++)
 				{
@@ -185,36 +180,21 @@ int main(int argc, char *argv[])
 						A2[k][l]-=(fct*A2[j-1][l]);
 					b[k]-=(fct*b[j-1]);
 				}
-			for(j=0; j<NG+1; j++)
-			{
-				for(k=0; k<NG+1; k++)
-					printf("%.0lf\t", A2[j][k]);
-				printf("%.0f\n", b[j]);
-			}
-			printf("----\n");
 			for(j=NG; j>-1; j--)
 			{
 				for(k=NG, fct=0; k>j; k--)
 					fct+=(A[j+1][k]);
 				fx1.a[j]=(b[j]-fct)/A[j][j];
 			}
+			dfx1 = derivar(fx1);
+			imprimir_poly(fx1);
+			imprimir_poly(dfx1);
+			xr = raiz_secante(dfx1, x1, er);
+			printf("f(%lf) = %lf\n", x1, evaluar(dfx1, x1));
+			printf("f(%lf) = %lf\n", x2, evaluar(dfx1, x2));
+			printf("f(%lf) = %lf\n", xr, evaluar(dfx1, xr));
 		}
 	}
-
-	x = 5;
-	printf("f(%lf) = %lf\n", x, evaluar(fx1, x));
-	dfx1 = derivar(fx1);
-	imprimir_poly(fx1);
-	imprimir_poly(dfx1);
-	x1 = -5;
-	x2 = 0;
-	er = 1e-10;
-	xr = raiz_biseccion(dfx1, x1, x2, er);
-	printf("f(%lf) = %lf\n", x1, evaluar(dfx1, x1));
-	printf("f(%lf) = %lf\n", x2, evaluar(dfx1, x2));
-	printf("f(%lf) = %lf\n", xr, evaluar(dfx1, xr));
-
-
 	liberar_lt(lt_d);
 	liberar_lt(lt_h);
 	fclose(fp);
