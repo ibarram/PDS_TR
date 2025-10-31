@@ -193,7 +193,9 @@ double raiz_secante(poly fx, double x1, double ea)
 {
 	double x2;
 	double fx1, dfx1, ea_a=100;
+	int i;
 	poly dfx = derivar(fx);
+	i=0;
 	while(ea_a>ea)
 	{
 		fx1 = evaluar(fx, x1);
@@ -202,9 +204,11 @@ double raiz_secante(poly fx, double x1, double ea)
 			x2 = x1-fx1/dfx1;
 		ea_a = fabs((x2-x1)/x2);
 		x1 = x2;
-		printf("%lf (%lf, %lf)\n", x1, ea_a, dfx1);
+		if(i<10)
+			printf("%lf (%lf, %lf, %lf)\n", x1, ea_a, fx1, dfx1);
+		i++;
 	}
-	return x1;
+	return x2;
 }
 
 int imprimir_poly(poly fx)

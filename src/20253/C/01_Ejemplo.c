@@ -39,8 +39,7 @@ int main(int argc, char *argv[])
 //	imprimir_datos(datos, nr, NC);
 	lt_d = unicos(datos, nr, NC, 0);
 	lt_h = unicos(datos, nr, NC, 1);
-	x1 = val_inicial(lt_h);
-	x2 = val_final(lt_h);
+	x1 = val_final(lt_h);
 	nud = contar_lt(lt_d);
 	nuh = contar_lt(lt_h);
 	printf("Dias: %d\nHoras: %d\n", nud, nuh);
@@ -183,7 +182,8 @@ int main(int argc, char *argv[])
 			for(j=NG; j>-1; j--)
 			{
 				for(k=NG, fct=0; k>j; k--)
-					fct+=(A[j+1][k]);
+					fct+=(A[j][k]*fx1.a[k]);
+//					fct+=(A[j+1][k]);
 				fx1.a[j]=(b[j]-fct)/A[j][j];
 			}
 			dfx1 = derivar(fx1);
@@ -191,7 +191,6 @@ int main(int argc, char *argv[])
 			imprimir_poly(dfx1);
 			xr = raiz_secante(dfx1, x1, er);
 			printf("f(%lf) = %lf\n", x1, evaluar(dfx1, x1));
-			printf("f(%lf) = %lf\n", x2, evaluar(dfx1, x2));
 			printf("f(%lf) = %lf\n", xr, evaluar(dfx1, xr));
 		}
 	}
