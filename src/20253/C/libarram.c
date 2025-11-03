@@ -159,6 +159,26 @@ poly derivar(poly fx)
 	return dfx;
 }
 
+poly deflacion(poly fx, double xr)
+{
+	poly gx;
+	double R;
+	int i;
+	gx.n = fx.n-1;
+	gx.a = (double*)calloc(fx.n, sizeof(double));
+	if(gx.a==NULL)
+	{
+		gx.n = 0;
+		return gx;
+	}
+	for(i=(gx.n-1), gx.a[gx.n]=fx.a[fx.n]; i>-1; i--)
+		gx.a[i]=fx.a[i+1]+gx.a[i+1]*xr;
+	R = fx.a[0]+gx.a[0]*xr;
+	if(R)
+		gx.n = 0;
+	return gx;
+}
+
 double raiz_biseccion(poly fx, double x1, double x2, double ea)
 {
 	double fx1, fx2, xr, fxr, ea_a;
@@ -204,8 +224,6 @@ double raiz_secante(poly fx, double x1, double ea)
 			x2 = x1-fx1/dfx1;
 		ea_a = fabs((x2-x1)/x2);
 		x1 = x2;
-		if(i<10)
-			printf("%lf (%lf, %lf, %lf)\n", x1, ea_a, fx1, dfx1);
 		i++;
 	}
 	return x2;

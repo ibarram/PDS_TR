@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "libarram.h"
 
 #define N 	50
@@ -12,9 +13,11 @@ int main(int argc, char *argv[])
 	int nr, **datos, i, j, k, l, nud, nuh;
 	int *x_test, *y_test, *x_training, *y_training;
 	double *sx, *sy, **A, **A2, *b, fct;
+	double prm[8];
 	FILE *fp;
-	poly fx1, dfx1;
-	double x, xr, x1, x2, er = 1e-10;
+	poly fx1, dfx1, dfx2;
+	double x, xr1, xr2, xr3, x1, x2, er = 0;
+	double fxr1, fxr2, fxr3, xth;
 	lt *lt_d, *lt_h, *lt_s;
 	if(argc<2)
 	{
@@ -187,11 +190,45 @@ int main(int argc, char *argv[])
 				fx1.a[j]=(b[j]-fct)/A[j][j];
 			}
 			dfx1 = derivar(fx1);
-			imprimir_poly(fx1);
-			imprimir_poly(dfx1);
-			xr = raiz_secante(dfx1, x1, er);
-			printf("f(%lf) = %lf\n", x1, evaluar(dfx1, x1));
-			printf("f(%lf) = %lf\n", xr, evaluar(dfx1, xr));
+//			imprimir_poly(fx1);
+//			imprimir_poly(dfx1);
+			xr1 = raiz_secante(dfx1, xr1, er);
+			dfx2 = deflacion(dfx1, xr1);
+			if(dfx2.n==0)
+				return 14;
+//			imprimir_poly(dfx2);
+			if(pow(dfx2.a[1],2)<4*dfx2.a[0]*dfx2.a[2])
+			{
+				xr2 = 0;
+				xr3 = 0;
+				xth = xr1;
+			}
+			else
+			{
+				xr2 = (-dfx2.a[1]-sqrt(pow(dfx2.a[1],2)-4*dfx2.a[0]*dfx2.a[2]))/(2*dfx2.a[2]);
+				xr3 = (-dfx2.a[1]+sqrt(pow(dfx2.a[1],2)-4*dfx2.a[0]*dfx2.a[2]))/(2*dfx2.a[2]);
+				fxr1 = evaluar(dfx1, xr1);
+				fxr2 = evaluar(dfx1, xr2);
+				fxr3 = evaluar(dfx1, xr3);
+				if(fxr1<fxr2&&fxr1<fxr3)
+					xth = xr1;
+				else if(fxr2<fxr1&&fxr2<fxr3)
+					xth = xr2;
+				else
+					xth = xr3;
+			}
+//			printf("f(%lf) = %lf\n", x1, evaluar(dfx1, x1));
+//			printf("f(%lf) = %lf\n", xr1, evaluar(dfx1, xr1));
+//			printf("f(%lf) = %lf\n", xr2, evaluar(dfx1, xr2));
+//			printf("f(%lf) = %lf\n", xr3, evaluar(dfx1, xr3));
+			printf("f(%lf) = %lf\n", xth, evaluar(dfx1, xth));
+			for(j=0, prm[0]=-1, prm[1]=0, prm[4]=-1, prm[5]=0, prm; j<(nud-1)*nuh; j++)
+			{
+				if(prm[x_training[j]>xth?4:0]<y_training[j])
+					prm[x_training[j]>xth?4:0] = y_training[j];
+				prm[x_training[j]>xth?5:1]+=(y_training[j]*x_training[j]);
+			}
+
 		}
 	}
 	liberar_lt(lt_d);

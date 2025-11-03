@@ -34,6 +34,7 @@ int liberar_lt(lt *lt_c);
 int contar_lt(lt *lt_d);
 double evaluar(poly fx, double x);
 poly derivar(poly fx);
+poly deflacion(poly fx, double xr);
 int imprimir_poly(poly fx);
 double raiz_biseccion(poly fx, double x1, double x2, double ea);
 double raiz_secante(poly fx, double x1, double ea);
