@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
 	{
 		for(j=0, k=0, l=0; j<nr; j++)
 		{
-			if(datos[j][0]==lt_d->x)
+			if(datos[j][0]==lt_s->x)
 			{
 				x_test[k] = datos[j][1];
 				y_test[k++] = datos[j][2];
@@ -161,6 +161,17 @@ int main(int argc, char *argv[])
 				x_training[l] = datos[j][1];
 				y_training[l++] = datos[j][2];
 			}
+		}
+		if(i>0)
+		{
+			for(j=0; j<2*NG+1; j++)
+				sx[j] = 0;
+			for(j=0; j<(NG+1)*(NG+1); j++)
+				A2[0][j] = 0;
+			for(j=0; j<NG+1; j++)
+				b[j] = 0;
+			for(j=0; j<fx1.n+1; j++)
+				fx1.a[j] = 0;
 		}
 		for(j=0; j<nuh; j++)
 			printf("%d\t%d\t%d\t%d\n", i, j, x_test[j], y_test[j]);
@@ -196,7 +207,8 @@ int main(int argc, char *argv[])
 		dfx1 = derivar(fx1);
 			imprimir_poly(fx1);
 			imprimir_poly(dfx1);
-		xr1 = raiz_secante(dfx1, xr1, er);
+//		xr1 = raiz_secante(dfx1, xr1, er);
+		xr1 = raiz_secante(dfx1, 0, er);
 		dfx2 = deflacion(dfx1, xr1);
 		if(dfx2.n==0)
 			return 14;
