@@ -1,0 +1,29 @@
+clc;
+close all;
+clear;
+
+file_img = 'Frutas01r_rggb.jpg';
+if ispc
+    d = '\';
+else
+    d = '/';
+end
+
+
+path_img = '/Users/ibarram/Library/CloudStorage/Dropbox/GitHub/PDS_TR/data/RGGB/';
+
+if ~exist(path_img, 'dir')
+    path_img = uigetdir(pwd, 'Selecciona el directorio.');
+    path_img = [path_img d];
+end
+
+imgRGGB = imread([path_img file_img]);
+[lv, lu] = size(imgRGGB);
+imgRGB = zeros(lv, lu, 3, 'uint8');
+
+imgRGB(:,:,1) 
+imgRGB(:,:,2)
+imgRGB(:,:,3)
+
+
+
